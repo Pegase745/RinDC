@@ -1,0 +1,27 @@
+{
+  "name": "RinDC",
+  "version": "0.0.1",
+  "description": "Managing racks in data centers, simply.",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pegase745/RinDC.git"
+  },
+  "keywords": [
+    "rack",
+    "data",
+    "center"
+  ],
+  "author": "Michel Nemnom <michel.nemnom+npm@gmail.com>",
+  "license": "BSD",
+  "gitHead": "d8555617bc1bc2d81b3da1a35513093cc6ddc9d4",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "express": "~3.2.0",
+    "mongodb": "~1.2.14"
+  }
+}
