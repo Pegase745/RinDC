@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html ng-app="racks">
+  <head>
+    <title>RinDC</title>
+  </head>
+  <body ng-controller="RacksCtrl">
+    <header>
+      <strong>R</strong>ack <strong>in</strong> my <strong>D</strong>ata <strong>C</strong>enter
+      <button ng-click="addRack()">Add a rack</button>
+    </header>
+    
+    <div id="sidebar">
+      <ng-include src="tpl/rack-list.html"></ng-include>
+    </div>
+
+    <div id="content">
+      <div ng-view></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
+    <script src="js/racks.js"></script>
+  </body>
+</html>

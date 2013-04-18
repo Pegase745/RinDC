@@ -1,0 +1,13 @@
+<div>
+  <label>Id:</label>
+  <input name="id" type="text" value="{{ rack.id }}" disabled />
+
+  <label>Name:</label>
+  <input type="text" name="rack.name" value="{{ rack.name }}" required/>
+
+  <label>DC:</label>
+  <input type="text" name="rack.dc" value="{{ rack.dc }}" required/>
+
+  <button class="save" ng-click="saveRack()">Save</button>
+  <button class="delete" ng-click="deleteRack()">Delete</button>
+</div>
