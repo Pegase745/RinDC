@@ -1,23 +1,31 @@
 <!DOCTYPE HTML>
-<html ng-app="racks">
+<html ng-app="RinDC">
   <head>
     <title>RinDC</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: #F6F6F6;
+      }
+    </style>
   </head>
-  <body ng-controller="RacksCtrl">
-    <header>
-      <strong>R</strong>ack <strong>in</strong> my <strong>D</strong>ata <strong>C</strong>enter
-      <button ng-click="addRack()">Add a rack</button>
-    </header>
-    
-    <div id="sidebar">
-      <ng-include src="tpl/rack-list.html"></ng-include>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <center>
+            <strong>R</strong>ack <strong>in</strong> my <strong>D</strong>ata <strong>C</strong>enter
+          </center>
+          <br><br>
+          <div ng-view></div>
+        </div>
+      </div>
     </div>
-
-    <div id="content">
-      <div ng-view></div>
-    </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"></script>
-    <script src="js/racks.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular-resource.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/filters.js"></script>
   </body>
 </html>
