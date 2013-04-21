@@ -5,6 +5,18 @@ function RackListCtrl($scope, Rack) {
 }
 
 function RackCreateCtrl($scope, $location, Rack) {
+
+  $scope.views = ['Front view', 'Back view'];
+  $scope.rackView = $scope.views[0];
+
+  $scope.types = [
+    {name:'Server'},
+    {name:'Switch'},
+    {name:'Router'},
+    {name:'Tray'},
+    {name:'Patch Panel'}
+  ];
+  
   $scope.save = function() {
     Rack.save($scope.rack, function(rack) {
       $location.path('/edit/' + rack._id.$oid);
@@ -17,6 +29,14 @@ function RackEditCtrl($scope, $location, $routeParams, Rack) {
 
   $scope.views = ['Front view', 'Back view'];
   $scope.rackView = $scope.views[0];
+
+  $scope.types = [
+    {name:'Server'},
+    {name:'Switch'},
+    {name:'Router'},
+    {name:'Tray'},
+    {name:'Patch Panel'}
+  ];
 
   Rack.get({id: $routeParams.rackId}, function(rack) {
     self.original = rack;
