@@ -94,16 +94,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="n in [] | range:42">
-              <td>{{n}}</td>
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.type"></td>
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.brand"></td>
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.model"></td>
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.sticker"></td>
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.u_type"></td>
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.powers"></td>
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.networks"></td> 
-              <td><input class="input-small" type="text" ng-model="rack.frontView.n.owner"></td>
+            <tr ng-repeat="row in frontRows">
+              <td>{{row.id}}</td>
+              <td><input class="input-small" type="text" ng-model="row.type" value="{{row.type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.brand" value="{{row.brand}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.model" value="{{row.model}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.sticker" value="{{row.sticker}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.u_type" value="{{row.u_type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.powers" value="{{row.powers}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td> 
+              <td><input class="input-small" type="text" ng-model="row.owner" value="{{row.owner}}"></td>
             </tr>
           </tbody>
           <tfoot>
@@ -136,16 +136,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="n in [] | range:42">
-              <td>{{n}}</td>
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.type"></td>
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.brand"></td>
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.model"></td>
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.sticker"></td>
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.u_type"></td>
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.powers"></td>
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.networks"></td> 
-              <td><input class="input-small" type="text" ng-model="rack.backView.n.owner"></td>
+            <tr ng-repeat="row in backRows">
+              <td>{{row.id}}</td>
+              <td><input class="input-small" type="text" ng-model="row.type" value="{{row.type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.brand" value="{{row.brand}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.model" value="{{row.model}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.sticker" value="{{row.sticker}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.u_type" value="{{row.u_type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.powers" value="{{row.powers}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td> 
+              <td><input class="input-small" type="text" ng-model="row.owner" value="{{row.owner}}"></td>
             </tr>
           </tbody>
           <tfoot>

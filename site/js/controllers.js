@@ -16,8 +16,40 @@ function RackCreateCtrl($scope, $location, Rack) {
     {name:'Tray'},
     {name:'Patch Panel'}
   ];
-  
+
+  $scope.frontRows = [];
+  $scope.backRows = [];
+
+  for(var i=42;i>0;i--)
+  { 
+    $scope.frontRows.push({
+      id: i,
+      type: '',
+      brand: '',
+      model: '',
+      sticker: '',
+      u_type: '',
+      powers: '',
+      networks: '',
+      owner: ''
+    });
+
+    $scope.backRows.push({
+      id: i,
+      type: '',
+      brand: '',
+      model: '',
+      sticker: '',
+      u_type: '',
+      powers: '',
+      networks: '',
+      owner: ''
+    });
+  }
+
   $scope.save = function() {
+    $scope.rack.frontRows = $scope.frontRows;
+    $scope.rack.backRows = $scope.backRows;
     Rack.save($scope.rack, function(rack) {
       $location.path('/edit/' + rack._id.$oid);
     });
@@ -41,6 +73,8 @@ function RackEditCtrl($scope, $location, $routeParams, Rack) {
   Rack.get({id: $routeParams.rackId}, function(rack) {
     self.original = rack;
     $scope.rack = new Rack(self.original);
+    $scope.frontRows = $scope.rack.frontRows;
+    $scope.backRows = $scope.rack.backRows;
   });
 
   $scope.isClean = function() {
