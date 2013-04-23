@@ -76,11 +76,11 @@
   <div class="row">
     <!-- Rack views -->
     <div class="span12">
-      <select class="pull-right" ng-model="rackView" ng-options="view for view in views"></select><br><br>
+      <select class="span2 pull-right" ng-model="rackView" ng-options="view for view in views"></select><br><br>
       <!-- Front view -->
       <div ng-switch on="rackView">
         <table class="table table-hover table-condensed" ng-switch-when="Front view">
-          <thead>
+         <thead>
             <tr>
               <th><strong>U</strong></th>
               <th>Type</th>

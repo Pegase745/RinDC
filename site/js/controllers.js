@@ -1,27 +1,21 @@
 "use strict";
 
 function RackListCtrl($scope, Rack) {
+  // Retrieve list of racks
   $scope.racks = Rack.query();
 }
 
 function RackCreateCtrl($scope, $location, Rack) {
 
-  $scope.views = ['Front view', 'Back view'];
+  // Views selector for creation
+  $scope.views = ['-- Select view --', 'Front view', 'Back view'];
   $scope.rackView = $scope.views[0];
-
-  $scope.types = [
-    {name:'Server'},
-    {name:'Switch'},
-    {name:'Router'},
-    {name:'Tray'},
-    {name:'Patch Panel'}
-  ];
 
   $scope.frontRows = [];
   $scope.backRows = [];
 
   for(var i=42;i>0;i--)
-  { 
+  {
     $scope.frontRows.push({
       id: i,
       type: '',
@@ -59,16 +53,9 @@ function RackCreateCtrl($scope, $location, Rack) {
 function RackEditCtrl($scope, $location, $routeParams, Rack) {
   var self = this;
 
+  // Views selector for creation
   $scope.views = ['Front view', 'Back view'];
   $scope.rackView = $scope.views[0];
-
-  $scope.types = [
-    {name:'Server'},
-    {name:'Switch'},
-    {name:'Router'},
-    {name:'Tray'},
-    {name:'Patch Panel'}
-  ];
 
   Rack.get({id: $routeParams.rackId}, function(rack) {
     self.original = rack;
