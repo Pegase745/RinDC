@@ -1,0 +1,26 @@
+/*
+ *  Main style
+ */
+body {
+  background-color: #F6F6F6;
+}
+#header {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+#header img {
+  opacity: 0.8;
+}
+#header label {
+  font-size: 72px;
+  font-weight: bold;
+  margin: 20px 152px 0 0;
+}
+#header small {
+  margin-left: 200px;
+}
+
+#sub-header {
+  margin-top: 20px;
+}

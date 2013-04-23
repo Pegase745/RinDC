@@ -1,0 +1,179 @@
+<h1>{{rack.dc}} - {{rack.name}} - {{rack.room}}</h1>
+<hr>
+<form class="form-horizontal" name="rackForm">
+  <!-- Form action buttons -->
+  <div class="row">
+    <div class="span12">
+      <p class="pull-right">
+        <a href="#/" class="btn">Cancel</a>
+        <button ng-click="save()" ng-disabled="isClean() || rackForm.$invalid" class="btn btn-primary">Save</button>
+        <button ng-click="destroy()" ng-show="rack._id" class="btn btn-danger">Delete</button>
+      </p>
+    </div>
+  </div>
+  <!-- First params -->
+  <div class="row">
+    <div class="span6">
+      <!-- Rack name -->
+      <div class="control-group" ng-class="{error: rackForm.name.$invalid}">
+        <label class="control-label">Rack name</label>
+        <div class="controls">
+          <input type="text" name="name" placeholder="Rack name" ng-model="rack.name" required>
+          <span ng-show="rackForm.name.$error.required" class="help-inline">Required</span>
+        </div>
+      </div>
+      <!-- Data center -->
+      <div class="control-group" ng-class="{error: rackForm.dc.$invalid}">
+        <label class="control-label">Data center</label>
+        <div class="controls">
+          <input type="text" name="dc" placeholder="Data center" ng-model="rack.dc" required>
+          <span ng-show="rackForm.dc.$error.required" class="help-inline">Required</span>
+        </div>
+      </div>
+      <!-- Room name -->
+      <div class="control-group" ng-class="{error: rackForm.room.$invalid}">
+        <label class="control-label">Room</label>
+        <div class="controls">
+          <input type="text" name="room" placeholder="Room" ng-model="rack.room" required>
+          <span ng-show="rackForm.room.$error.required" class="help-inline">Required</span>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <!-- Number of power inputs -->
+      <div class="control-group" ng-class="{error: rackForm.powerinput.$invalid}">
+        <label class="control-label">Nb power input</label>
+        <div class="controls">
+          <input class="input-mini" type="text" name="powerinput" placeholder="Power" ng-model="rack.powerinput" required>
+          <span ng-show="rackForm.powerinput.$error.required" class="help-inline">Required</span>
+        </div>
+      </div>
+      <!-- On what? -->
+      <div class="control-group">
+        <div class="controls">
+          <input type="checkbox" ng-model="rack.pdu"> on PDU
+          <input type="checkbox" ng-model="rack.apc"> on APC
+        </div>
+      </div>
+      <!-- 1st APC -->
+      <div class="control-group">
+        <label class="control-label">1st APC</label>
+        <div class="controls">
+          <input class="input-small" type="text" name="apc1" placeholder="APC1" ng-model="rack.apc1">
+        </div>
+      </div>
+      <!-- 2nd APC -->
+      <div class="control-group">
+        <label class="control-label">2nd APC</label>
+        <div class="controls">
+          <input class="input-small" type="text" name="apc2" placeholder="APC2" ng-model="rack.apc2">
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <!-- Second params -->
+  <div class="row">
+    <!-- Rack views -->
+    <div class="span12">
+      <select class="span2 pull-right" ng-model="rackView" ng-options="view for view in views"></select><br><br>
+      <!-- Front view -->
+      <div ng-switch on="rackView">
+        <table class="table table-hover table-condensed" ng-switch-when="Front view">
+         <thead>
+            <tr>
+              <th><strong>U</strong></th>
+              <th>Type</th>
+              <th>Marque</th>
+              <th>Modèle</th>
+              <th>Etiquette</th>
+              <th>Type of U</th>
+              <th>Alims</th>
+              <th>Networks</th>
+              <th>Client</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in frontRows">
+              <td>{{row.id}}</td>
+              <td><input class="input-small" type="text" ng-model="row.type" value="{{row.type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.brand" value="{{row.brand}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.model" value="{{row.model}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.sticker" value="{{row.sticker}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.u_type" value="{{row.u_type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.powers" value="{{row.powers}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td> 
+              <td><input class="input-small" type="text" ng-model="row.owner" value="{{row.owner}}"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th><strong>U</strong></th>
+              <th>Type</th>
+              <th>Marque</th>
+              <th>Modèle</th>
+              <th>Etiquette</th>
+              <th>Type of U</th>
+              <th>Alims</th>
+              <th>Networks</th>
+              <th>Client</th>
+            </tr>
+          </tfoot>
+        </table>
+        <!-- Back view -->
+        <table class="table table-hover table-condensed" ng-switch-when="Back view">
+          <thead>
+            <tr>
+              <th><strong>U</strong></th>
+              <th>Type</th>
+              <th>Marque</th>
+              <th>Modèle</th>
+              <th>Etiquette</th>
+              <th>Type of U</th>
+              <th>Alims</th>
+              <th>Networks</th>
+              <th>Client</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in backRows">
+              <td>{{row.id}}</td>
+              <td><input class="input-small" type="text" ng-model="row.type" value="{{row.type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.brand" value="{{row.brand}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.model" value="{{row.model}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.sticker" value="{{row.sticker}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.u_type" value="{{row.u_type}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.powers" value="{{row.powers}}"></td>
+              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td> 
+              <td><input class="input-small" type="text" ng-model="row.owner" value="{{row.owner}}"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th><strong>U</strong></th>
+              <th>Type</th>
+              <th>Marque</th>
+              <th>Modèle</th>
+              <th>Etiquette</th>
+              <th>Type of U</th>
+              <th>Alims</th>
+              <th>Networks</th>
+              <th>Client</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- Form action buttons -->
+  <div class="row">
+    <div class="span12">
+      <p class="pull-right">
+        <a href="#/" class="btn">Cancel</a>
+        <button ng-click="save()" ng-disabled="isClean() || rackForm.$invalid" class="btn btn-primary">Save</button>
+        <button ng-click="destroy()" ng-show="rack._id" class="btn btn-danger">Delete</button>
+      </p>
+    </div>
+  </div>
+</form>
+
