@@ -48,6 +48,42 @@ function RackCreateCtrl($scope, $location, Rack) {
       $location.path('/edit/' + rack._id.$oid);
     });
   }
+
+
+    //Other stuff
+  var clipboard = "";
+
+  $scope.rowClick = function(row) {
+    if(clipboard == "") {
+      clipboard = row;
+    } else {
+      row.type = clipboard.type;
+      row.brand = clipboard.brand;
+      row.model = clipboard.model;
+      row.u_type = clipboard.u_type;
+      row.powers = clipboard.powers;
+      row.networks = clipboard.networks;
+      row.owner = clipboard.owner;
+
+      clipboard = "";
+    }
+  }
+
+  $scope.cpButtonShow = function() {
+    if(clipboard == ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+  $scope.pasteButtonShow = function() {
+    if(clipboard != ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
 }
 
 function RackEditCtrl($scope, $location, $routeParams, Rack) {
@@ -79,4 +115,40 @@ function RackEditCtrl($scope, $location, $routeParams, Rack) {
       $location.path('/');
     });
   };
+
+  //Other stuff
+  var clipboard = "";
+
+  $scope.rowClick = function(row) {
+    if(clipboard == "") {
+      clipboard = row;
+    } else {
+      row.type = clipboard.type;
+      row.brand = clipboard.brand;
+      row.model = clipboard.model;
+      row.u_type = clipboard.u_type;
+      row.powers = clipboard.powers;
+      row.networks = clipboard.networks;
+      row.owner = clipboard.owner;
+
+      clipboard = "";
+    }
+  }
+
+  $scope.cpButtonShow = function() {
+    if(clipboard == ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+  $scope.pasteButtonShow = function() {
+    if(clipboard != ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
 }
