@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module('RinDC', ['RinDC.services', 'RinDC.filters']).
+angular.module('RinDC', ['RinDC.services', 'RinDC.filters', 'ui.bootstrap']).
   config(function($routeProvider) {
     $routeProvider.
       when('/', {controller: RackListCtrl, templateUrl: 'tpl/rack-list.html'}).

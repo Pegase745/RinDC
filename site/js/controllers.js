@@ -87,7 +87,7 @@ function RackCreateCtrl($scope, $location, Rack) {
   };
 }
 
-function RackEditCtrl($scope, $location, $routeParams, Rack) {
+function RackEditCtrl($scope, $location, $routeParams, Rack, $dialog) {
   var self = this;
 
   // Views selector for creation
@@ -106,8 +106,18 @@ function RackEditCtrl($scope, $location, $routeParams, Rack) {
   }
 
   $scope.destroy = function() {
-    self.original.destroy(function() {
-      $location.path('/list');
+    var title = 'Confirmation';
+    var msg = 'Are you sure you want to delete this rack?';
+    var btns = [{result:'ok', label: 'OK', cssClass: 'btn-primary'}, {result:'cancel', label: 'Cancel'}];
+
+    $dialog.messageBox(title, msg, btns)
+      .open()
+      .then(function(result){
+        if(result == 'ok') {
+          self.original.destroy(function() {
+            $location.path('/list');
+          });
+        }
     });
   };
 
