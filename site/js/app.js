@@ -8,7 +8,10 @@ angular.module('RinDC', ['RinDC.services', 'RinDC.filters', 'ui.bootstrap']).
       when('/new', {controller: RackCreateCtrl, templateUrl: 'tpl/rack-detail.html'}).
       otherwise({redirectTo: '/'});
   })
-  .directive('paginator', function () {
+  .factory('PageStateCache', ['$cacheFactory', function ($cacheFactory) {
+    return $cacheFactory('PageStateCache');
+  }])
+  .directive('paginator', ['PageStateCache', function (PageStateCache) {
     var pageSizeLabel = "<strong>View </strong>";
     return {
       priority: 0,
@@ -21,13 +24,20 @@ angular.module('RinDC', ['RinDC.services', 'RinDC.filters', 'ui.bootstrap']).
               + '<button class="btn" ng-disabled="isLastPage()" ng-click="incPage()">&gt;</button></span>',
       replace: false,
       compile: function compile(tElement, tAttrs, transclude) {
-        return {
-          pre: function preLink(scope, iElement, iAttrs, controller) {
-            scope.pageSizeList = [10, 20, 50, 100];
-            scope.paginator = {
-              pageSize: 10,
-              currentPage: 0
-            };
+      var cacheId = tAttrs.cache ? tAttrs.cache + '.paginator' : '';
+      return {
+        pre: function preLink(scope, iElement, iAttrs, controller) {
+          scope.pageSizeList = [10, 20, 50, 100];
+          var defaultSettings = {
+            pageSize: 10,
+            currentPage: 0
+          };
+          scope.paginator = cacheId
+              ? PageStateCache.get(cacheId) || defaultSettings
+              : defaultSettings;
+          if (cacheId) {
+            PageStateCache.put(cacheId, scope.paginator)
+          }
 
             scope.isFirstPage = function () {
               return scope.paginator.currentPage == 0;
@@ -74,4 +84,4 @@ angular.module('RinDC', ['RinDC.services', 'RinDC.filters', 'ui.bootstrap']).
         };
       }
     };
-  });
+  }]);
