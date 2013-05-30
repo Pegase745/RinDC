@@ -4,6 +4,12 @@ function RackListCtrl($scope, Rack) {
   // Retrieve list of racks
   $scope.racks = Rack.query();
   $scope.total_racks = $scope.racks.length;
+
+  $scope.$watch('search', function(newValue, oldValue) {
+    if (newValue != oldValue) {
+      $scope.firstPage();
+    }
+  });
 }
 
 function RackCreateCtrl($scope, $location, Rack) {

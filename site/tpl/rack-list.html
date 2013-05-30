@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="rack in racks | filter:search | orderBy:'name'">
+  <tr ng-repeat="rack in pageItems()">
     <td>{{rack.name}}</td>
     <td>{{rack.dc}}</td>
     <td>{{rack.room}}</td>
@@ -20,3 +20,4 @@
   </tr>
   </tbody>
 </table>
+<span paginator items="racks | filter:search | orderBy:'name'"></span>
