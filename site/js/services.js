@@ -1,6 +1,6 @@
 angular.module('RinDC.services', ['ngResource']).
   factory('Rack', function($resource) {
-    var Rack = $resource('https://api.mongolab.com/api/1/databases' + '/rindc-nerim/collections/racks/:id',
+    var Rack = $resource('https://api.mongolab.com/api/1/databases' + '/rindc/collections/racks/:id',
       { apiKey: 'si9IevnTTHd1xul1ipeTqJvCsEA0PssU' }, {
         update: { method: 'PUT' }
       }

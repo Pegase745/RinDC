@@ -60,6 +60,7 @@ function RackCreateCtrl($scope, $location, Rack) {
       row.type = clipboard.type;
       row.brand = clipboard.brand;
       row.model = clipboard.model;
+      row.sticker = clipboard.sticker;
       row.u_type = clipboard.u_type;
       row.powers = clipboard.powers;
       row.networks = clipboard.networks;
@@ -126,6 +127,7 @@ function RackEditCtrl($scope, $location, $routeParams, Rack) {
       row.type = clipboard.type;
       row.brand = clipboard.brand;
       row.model = clipboard.model;
+      row.sticker = clipboard.sticker;
       row.u_type = clipboard.u_type;
       row.powers = clipboard.powers;
       row.networks = clipboard.networks;
