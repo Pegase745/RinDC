@@ -3,6 +3,13 @@
 function RackListCtrl($scope, Rack) {
   // Retrieve list of racks
   $scope.racks = Rack.query();
+  $scope.total_racks = $scope.racks.length;
+
+  $scope.$watch('search', function(newValue, oldValue) {
+    if (newValue != oldValue) {
+      $scope.firstPage();
+    }
+  });
 }
 
 function RackCreateCtrl($scope, $location, Rack) {
@@ -48,9 +55,46 @@ function RackCreateCtrl($scope, $location, Rack) {
       $location.path('/edit/' + rack._id.$oid);
     });
   }
+
+
+  //Other stuff
+  var clipboard = "";
+
+  $scope.rowClick = function(row) {
+    if(clipboard == "") {
+      clipboard = row;
+    } else {
+      row.type = clipboard.type;
+      row.brand = clipboard.brand;
+      row.model = clipboard.model;
+      row.sticker = clipboard.sticker;
+      row.u_type = clipboard.u_type;
+      row.powers = clipboard.powers;
+      row.networks = clipboard.networks;
+      row.owner = clipboard.owner;
+
+      clipboard = "";
+    }
+  }
+
+  $scope.cpButtonShow = function() {
+    if(clipboard == ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+  $scope.pasteButtonShow = function() {
+    if(clipboard != ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
 }
 
-function RackEditCtrl($scope, $location, $routeParams, Rack) {
+function RackEditCtrl($scope, $location, $routeParams, Rack, $dialog) {
   var self = this;
 
   // Views selector for creation
@@ -69,8 +113,18 @@ function RackEditCtrl($scope, $location, $routeParams, Rack) {
   }
 
   $scope.destroy = function() {
-    self.original.destroy(function() {
-      $location.path('/list');
+    var title = 'Confirmation';
+    var msg = 'Are you sure you want to delete this rack?';
+    var btns = [{result:'ok', label: 'OK', cssClass: 'btn-primary'}, {result:'cancel', label: 'Cancel'}];
+
+    $dialog.messageBox(title, msg, btns)
+      .open()
+      .then(function(result){
+        if(result == 'ok') {
+          self.original.destroy(function() {
+            $location.path('/list');
+          });
+        }
     });
   };
 
@@ -79,4 +133,41 @@ function RackEditCtrl($scope, $location, $routeParams, Rack) {
       $location.path('/');
     });
   };
+
+  //Other stuff
+  var clipboard = "";
+
+  $scope.rowClick = function(row) {
+    if(clipboard == "") {
+      clipboard = row;
+    } else {
+      row.type = clipboard.type;
+      row.brand = clipboard.brand;
+      row.model = clipboard.model;
+      row.sticker = clipboard.sticker;
+      row.u_type = clipboard.u_type;
+      row.powers = clipboard.powers;
+      row.networks = clipboard.networks;
+      row.owner = clipboard.owner;
+
+      clipboard = "";
+    }
+  }
+
+  $scope.cpButtonShow = function() {
+    if(clipboard == ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+  $scope.pasteButtonShow = function() {
+    if(clipboard != ""){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
 }

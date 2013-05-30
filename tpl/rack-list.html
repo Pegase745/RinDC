@@ -1,4 +1,5 @@
 <input class="input-block-level" type="text" placeholder="Search for a rack.." ng-model="search">
+<center><strong style='color:red;'>Total racks: {{racks.length}}</strong></center>
 <table class="table table-striped table-condensed">
   <thead>
     <tr>
@@ -9,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="rack in racks | filter:search | orderBy:'name'">
+  <tr ng-repeat="rack in pageItems()">
     <td>{{rack.name}}</td>
     <td>{{rack.dc}}</td>
     <td>{{rack.room}}</td>
@@ -19,3 +20,4 @@
   </tr>
   </tbody>
 </table>
+<span paginator items="racks | filter:search | orderBy:'name'" cache="racks"></span>

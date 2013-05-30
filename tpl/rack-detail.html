@@ -51,22 +51,23 @@
       <!-- On what? -->
       <div class="control-group">
         <div class="controls">
+          <input type="checkbox" ng-model="rack.headband"> on B
           <input type="checkbox" ng-model="rack.pdu"> on PDU
           <input type="checkbox" ng-model="rack.apc"> on APC
         </div>
       </div>
       <!-- 1st APC -->
       <div class="control-group">
-        <label class="control-label">1st APC</label>
+        <label class="control-label">APC A</label>
         <div class="controls">
-          <input class="input-small" type="text" name="apc1" placeholder="APC1" ng-model="rack.apc1">
+          <input class="input-small" type="text" name="apc1" placeholder="APC A" ng-model="rack.apc1">
         </div>
       </div>
       <!-- 2nd APC -->
       <div class="control-group">
-        <label class="control-label">2nd APC</label>
+        <label class="control-label">APC B</label>
         <div class="controls">
-          <input class="input-small" type="text" name="apc2" placeholder="APC2" ng-model="rack.apc2">
+          <input class="input-small" type="text" name="apc2" placeholder="APC B" ng-model="rack.apc2">
         </div>
       </div>
     </div>
@@ -91,6 +92,7 @@
               <th>Alims</th>
               <th>Networks</th>
               <th>Client</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -99,11 +101,14 @@
               <td><input class="input-small" type="text" ng-model="row.type" value="{{row.type}}"></td>
               <td><input class="input-small" type="text" ng-model="row.brand" value="{{row.brand}}"></td>
               <td><input class="input-small" type="text" ng-model="row.model" value="{{row.model}}"></td>
-              <td><input class="input-small" type="text" ng-model="row.sticker" value="{{row.sticker}}"></td>
+              <td><input class="input-xlarge" type="text" ng-model="row.sticker" value="{{row.sticker}}"></td>
               <td><input class="input-small" type="text" ng-model="row.u_type" value="{{row.u_type}}"></td>
               <td><input class="input-small" type="text" ng-model="row.powers" value="{{row.powers}}"></td>
-              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td> 
+              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td>
               <td><input class="input-small" type="text" ng-model="row.owner" value="{{row.owner}}"></td>
+              <td><button class="btn span1" ng-show="cpButtonShow()" ng-click="rowClick(row)">Copy</button>
+                  <button class="btn span1" ng-show="pasteButtonShow()" ng-click="rowClick(row)">Paste</button>
+              </td>
             </tr>
           </tbody>
           <tfoot>
@@ -117,6 +122,7 @@
               <th>Alims</th>
               <th>Networks</th>
               <th>Client</th>
+              <th>Actions</th>
             </tr>
           </tfoot>
         </table>
@@ -133,6 +139,7 @@
               <th>Alims</th>
               <th>Networks</th>
               <th>Client</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -144,8 +151,11 @@
               <td><input class="input-small" type="text" ng-model="row.sticker" value="{{row.sticker}}"></td>
               <td><input class="input-small" type="text" ng-model="row.u_type" value="{{row.u_type}}"></td>
               <td><input class="input-small" type="text" ng-model="row.powers" value="{{row.powers}}"></td>
-              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td> 
+              <td><input class="input-small" type="text" ng-model="row.networks" value="{{row.networks}}"></td>
               <td><input class="input-small" type="text" ng-model="row.owner" value="{{row.owner}}"></td>
+              <td><button class="btn span1" ng-show="cpButtonShow()" ng-click="rowClick(row)">Copy</button>
+                  <button class="btn span1" ng-show="pasteButtonShow()" ng-click="rowClick(row)">Paste</button>
+              </td>
             </tr>
           </tbody>
           <tfoot>
@@ -159,6 +169,7 @@
               <th>Alims</th>
               <th>Networks</th>
               <th>Client</th>
+              <th>Actions</th>
             </tr>
           </tfoot>
         </table>
