@@ -3,6 +3,7 @@
 function RackListCtrl($scope, Rack) {
   // Retrieve list of racks
   $scope.racks = Rack.query();
+  $scope.total_racks = $scope.racks.length;
 }
 
 function RackCreateCtrl($scope, $location, Rack) {
@@ -50,7 +51,7 @@ function RackCreateCtrl($scope, $location, Rack) {
   }
 
 
-    //Other stuff
+  //Other stuff
   var clipboard = "";
 
   $scope.rowClick = function(row) {
