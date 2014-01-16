@@ -5,3 +5,7 @@
 ***
 
 Managing racks in data centers, simply.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Pegase745/rindc/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
